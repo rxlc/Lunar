@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap');
+
+.site {
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.site.visible .icon {
+    transform: scale(1, 1);
+}
+
+.site .icon {
+    position: absolute;
+    top: -10px;
+    left: -15px;
+    width: 30px;
+    height: 30px;
+
+    transform: scale(0.01, 0.01);
+    transition: transform 0.3s;
+}
+
+.site.visible .text {
+    transform: scale(1, 1);
+}
+
+.site .text {
+    position: absolute;
+    left: 20px;
+    font-size: 14px;
+    width: 200px;
+    pointer-events: none;
+    font-family: 'Raleway', sans-serif;
+
+    color: #c07910;
+
+    transform: scale(0.01, 0.01);
+    transition: transform 0.3s;
+}
+
+.altText {
+    top: 26px;
+    right: 10px;
+}
+
+.clickable {
+    cursor: pointer;
+}
