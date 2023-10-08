@@ -3,6 +3,8 @@ import Experience from "../Experience";
 
 import Helper from '../Utils/Helpers';
 
+import Sun from './Sun';
+import Earth from './Earth';
 import Moon from './Moon';
 import PointsList from './PointsOfInterest/PointsList';
 import Wave from './Wave';
@@ -24,6 +26,8 @@ export default class World {
     initialize() {
         this.initSkyBox();
 
+        this.earth = new Earth();
+        this.sun = new Sun();
         this.moon = new Moon();
         this.pointsList = new PointsList();
     }
