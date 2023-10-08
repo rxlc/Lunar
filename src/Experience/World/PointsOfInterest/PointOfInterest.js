@@ -6,12 +6,14 @@ export default class PointOfInterest {
         this.experience = new Experience();
         this.scene = this.experience.scene;
         this.camera = this.experience.camera;
+        this.world = this.experience.world;
 
         this.position = position;
         this.currentPos = new THREE.Vector2(0, 0),
         this.velocity = new THREE.Vector2(0, 0),
         this.id = id;
         this.name = name;
+        this.type = type;
 
         this.ready = false;
 
@@ -21,6 +23,8 @@ export default class PointOfInterest {
         this.easing = 0.4;
 
         this.initialize();
+
+        this.pointListReady = false;
     }
 
     initialize() {
@@ -28,6 +32,15 @@ export default class PointOfInterest {
     }
 
     update() {
+        if (this.pointListReady == false) {
+            this.world = this.experience.world;
+            if (this.world.pointsList) {
+                this.pointsList = this.world.pointsList;
+                this.pointsListPoints = this.world.pointsList.points
+                this.pointListReady = true;
+            }
+        }
+
         if (this.ready) {
             const screenPos = this.position.clone()
             screenPos.project(this.camera.instance)
@@ -78,13 +91,16 @@ export default class PointOfInterest {
             }
         } else {
             let element = document.querySelector(`.${this.id}`);
-            if (element) {
+            if (element && this.pointListReady) {
                 this.element = element;
                 this.ready = true;
 
-                this.element.addEventListener('click', () => {
-                    document.dispatchEvent(new CustomEvent('apolloClicked', {detail: this.id}));
-                })
+                if (this.type === 'apollo' || this.type === 'apolloAlt') {
+                    this.element.addEventListener('click', () => {
+                        this.pointsList.focus(this.name);
+                        document.dispatchEvent(new CustomEvent('apolloClicked', {detail: this.name}));
+                    })
+                }
             }   
         }
     }

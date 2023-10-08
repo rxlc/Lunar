@@ -21,7 +21,6 @@ export default class Moon {
         this.initialize();
     }
 
-
     initialize() {
         this.geometry = new THREE.SphereGeometry(this.radius, this.segments, this.segments);  
 

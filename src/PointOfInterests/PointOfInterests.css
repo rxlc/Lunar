@@ -34,15 +34,28 @@
     pointer-events: none;
     font-family: 'Raleway', sans-serif;
 
-    color: #c07910;
-
     transform: scale(0.01, 0.01);
     transition: transform 0.3s;
+}
+
+.apolloText {
+    color: #c07910;
 }
 
 .altText {
     top: 26px;
     right: 10px;
+    color: #c07910;
+}
+
+.moonText {
+    font-size: 10px;
+    color: #826aed;
+}
+
+.mtText {
+    font-size: 10px;
+    color: #00b4d8;
 }
 
 .clickable {

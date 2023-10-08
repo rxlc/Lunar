@@ -3,10 +3,13 @@ import Experience from "../../Experience";
 
 import PointOfInterest from "./PointOfInterest";
 
+import gsap from 'gsap';
+
 export default class PointsList {
     constructor() {
         this.experience = new Experience();
         this.scene = this.experience.scene;
+        this.camera = this.experience.camera;
 
         this.points = [];
 
@@ -16,12 +19,21 @@ export default class PointsList {
 
     definePoints() {
         this.definedPoints = [
-            {type: "apollo", id: "site-0", name: "Apollo 11", lat: 0.67416, long: 23.4731},
-            {type: "apolloAlt", id: "site-1", name: "Apollo 12", lat: -3.1975, long: -23.3856},
-            {type: "apollo", id: "site-2", name: "Apollo 14", lat: -3.6733, long: -17.4653},
-            {type: "apollo", id: "site-3", name: "Apollo 15", lat: 26.1008, long: 3.6527},
-            {type: "apollo", id: "site-4", name: "Apollo 16", lat: -8.9913, long: 15.5144},
-            {type: "apollo", id: "site-5", name: "Apollo 17", lat: 20.1653, long: 30.7658},
+            {type: "apollo",name: "Apollo 11", lat: 0.67416, long: 23.4731},
+            {type: "apolloAlt", name: "Apollo 12", lat: -3.1975, long: -23.3856},
+            {type: "apollo", name: "Apollo 14", lat: -3.6733, long: -17.4653},
+            {type: "apollo", name: "Apollo 15", lat: 26.1008, long: 3.6527},
+            {type: "apollo", name: "Apollo 16", lat: -8.9913, long: 15.5144},
+            {type: "apollo", name: "Apollo 17", lat: 20.1653, long: 30.7658},
+            {type: "sea", name: "Mare Vaporum", lat: 13.3, long: 3.6},
+            {type: "sea", name: "Mare Tranquillitatis", lat: 8.5, long: 31.4},
+            {type: "sea", name: "Mare Serenitatis", lat: 28.0, long: 17.5},
+            {type: "sea", name: "Mare Fecunditatis", lat: -0.9182, long: 48.6595},
+            {type: "sea", name: "Mare Crisium", lat: 17.0, long: 59.1},
+            {type: "mountain", name: "Montes Alpes", lat: 46.4, long: 0.8},
+            {type: "mountain", name: "Montes Caucasus", lat: 38.4, long: 10.0},
+            {type: "mountain", name: "Montes Apenninus", lat: 18.9, long: 3.7},
+            
         ];
     }
 
@@ -36,8 +48,9 @@ export default class PointsList {
         return new THREE.Vector3(xPos, yPos, zPos);
     }
 
-    initPositions() {
+    initPosAndIds() {
         for (let i=0; i<this.definedPoints.length; i++) {
+            this.definedPoints[i].id = "site_" + i;
             if (this.definedPoints[i].position == undefined) {
                 this.definedPoints[i].position = this.latlongToPos(this.definedPoints[i].lat, this.definedPoints[i].long, 100);
             }
@@ -45,7 +58,7 @@ export default class PointsList {
     }
 
     initPoints() {
-        this.initPositions();
+        this.initPosAndIds();
 
         this.points = [];
 
@@ -55,6 +68,28 @@ export default class PointsList {
             const point = this.definedPoints[i];
             this.points.push(new PointOfInterest(point.type, point.id, point.name, point.position));
         }
+    }
+
+    focus(pointName) {
+        let def = this;
+        let pl = gsap.timeline();
+
+        let duration = 1.4
+
+        let selectedPoint = this.points.find(point => point.name == pointName);
+        
+        let newPos = selectedPoint.position.clone().normalize().multiplyScalar(280);
+    
+        pl.to(this.camera.instance.position, {
+            duration,
+            ease: "power4.out",
+            x: newPos.x,
+            y: newPos.y,
+            z: newPos.z,
+            onUpdate: function() {
+                def.camera.controls.update();
+            },
+        },0);
     }
 
     update() {
