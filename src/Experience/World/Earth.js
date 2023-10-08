@@ -17,7 +17,7 @@ export default class Earth {
         this.material = new THREE.MeshPhongMaterial({map:'textures/earth/earthtexture1'});
         this.mesh = new THREE.mesh(this.geometry, this.material);
         this.mesh.rotation.set(0,0,0);
-        this.mesh.position.set(10000, 0, 0);
+        this.mesh.position.set(-10000, 0, 0);
         this.scene.add(this.mesh);
     }
 }
