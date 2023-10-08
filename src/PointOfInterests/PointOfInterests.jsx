@@ -14,7 +14,6 @@ export default function PointOfInterests() {
 
   return (
     <div>
-      
       {points
         .filter((point) => point.type === "apollo")
         .map((point) => (
@@ -38,7 +37,7 @@ export default function PointOfInterests() {
       ))}
 
       {points
-        .filter((point) => point.type === "sea")
+        .filter((point) => point.type === "ocean")
         .map((point) => (
           <div key={point.id} className={`site ${point.id}`}>
               <svg className="icon" width="20" height="20">

@@ -5,6 +5,7 @@ import Helper from '../Utils/Helpers';
 
 import Moon from './Moon';
 import PointsList from './PointsOfInterest/PointsList';
+import Wave from './Wave';
 
 export default class World {
     constructor() {

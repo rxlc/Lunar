@@ -13,6 +13,20 @@ export default class PointsList {
 
         this.points = [];
 
+        this.toggleState = {
+            "apollo": true,
+            "apolloAlt": true,
+            "mountain": true,
+            "ocean": true,
+        }
+        
+        this.definePoints();
+        this.initPoints();
+    }
+
+    toggle(newToggleState) {
+        this.toggleState = newToggleState;
+        console.log(this.toggleState)
         this.definePoints();
         this.initPoints();
     }
@@ -25,16 +39,25 @@ export default class PointsList {
             {type: "apollo", name: "Apollo 15", lat: 26.1008, long: 3.6527},
             {type: "apollo", name: "Apollo 16", lat: -8.9913, long: 15.5144},
             {type: "apollo", name: "Apollo 17", lat: 20.1653, long: 30.7658},
-            {type: "sea", name: "Mare Vaporum", lat: 13.3, long: 3.6},
-            {type: "sea", name: "Mare Tranquillitatis", lat: 8.5, long: 31.4},
-            {type: "sea", name: "Mare Serenitatis", lat: 28.0, long: 17.5},
-            {type: "sea", name: "Mare Fecunditatis", lat: -0.9182, long: 48.6595},
-            {type: "sea", name: "Mare Crisium", lat: 17.0, long: 59.1},
+            {type: "ocean", name: "Mare Vaporum", lat: 13.3, long: 3.6},
+            {type: "ocean", name: "Mare Tranquillitatis", lat: 8.5, long: 31.4},
+            {type: "ocean", name: "Mare Serenitatis", lat: 28.0, long: 17.5},
+            {type: "ocean", name: "Mare Fecunditatis", lat: -0.9182, long: 48.6595},
+            {type: "ocean", name: "Mare Crisium", lat: 17.0, long: 59.1},
             {type: "mountain", name: "Montes Alpes", lat: 46.4, long: 0.8},
             {type: "mountain", name: "Montes Caucasus", lat: 38.4, long: 10.0},
             {type: "mountain", name: "Montes Apenninus", lat: 18.9, long: 3.7},
             
         ];
+
+        for (let i=0; i<this.definedPoints.length; i++) {
+            if (this.toggleState[this.definedPoints[i].type] == false) {
+                this.definedPoints.splice(i, 1);
+                i--;
+            }
+        }
+
+        console.log("def", this.definedPoints)
     }
 
     latlongToPos(lat, long, radius) {
