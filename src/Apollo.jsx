@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Card, Image, Heading, Text, Flex, IconButton } from '@chakra-ui/react'
 import { ArrowBackIcon } from '@chakra-ui/icons'
 
 import { motion } from 'framer-motion'
+
+import { CurrentQuakeContext } from './Contexts/CurrentQuakeContext'
+import { ExperienceContext } from './Contexts/ExperienceContext'
 
 export default function Apollo() {
   const apolloStyle = {
@@ -14,6 +17,11 @@ export default function Apollo() {
 
   const [jsonData, setJsonData] = useState(null);
   const [currentApollo, setCurrentApollo] = useState(null);
+
+  const { currentQuake } = useContext(CurrentQuakeContext);
+  const { experience } = useContext(ExperienceContext);
+
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -33,13 +41,29 @@ export default function Apollo() {
   }, []);
 
   useEffect(() => {
+    if (currentQuake != null) {
+      setCurrentApollo(null);
+    }
+  }, [currentQuake]);
+
+  useEffect(() => {
+    console.log(jsonData, experience, loaded)
+    if (jsonData && experience && !loaded) {
+      setLoaded(true);
+    }
+  }, [jsonData, experience]);
+
+  useEffect(() => {
     document.addEventListener("apolloClicked", handleApolloClicked);
-  }, [jsonData]);
+  }, [loaded]);
 
   const handleApolloClicked = (e) => {
-    let selectedApollo = e.detail;
+    const selectedApollo = e.detail;
 
-    if (jsonData) setCurrentApollo(jsonData[selectedApollo]);
+    if (jsonData && currentQuake == null) {
+      experience.world.pointsList.focusPoint(selectedApollo)
+      setCurrentApollo(jsonData[selectedApollo]);
+    }
   }
 
   const handleBackClicked = () => {

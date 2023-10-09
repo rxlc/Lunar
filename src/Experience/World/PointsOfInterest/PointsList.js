@@ -56,8 +56,6 @@ export default class PointsList {
                 i--;
             }
         }
-
-        console.log("def", this.definedPoints)
     }
 
     latlongToPos(lat, long, radius) {
@@ -93,7 +91,27 @@ export default class PointsList {
         }
     }
 
-    focus(pointName) {
+    focus(lat, long) {
+        let def = this;
+        let pl = gsap.timeline();
+
+        let duration = 1.4
+
+        let newPos = this.latlongToPos(lat, long, 280);
+
+        pl.to(this.camera.instance.position, {
+            duration,
+            ease: "power4.out",
+            x: newPos.x,
+            y: newPos.y,
+            z: newPos.z,
+            onUpdate: function() {
+                def.camera.controls.update();
+            },
+        },0);
+    }
+
+    focusPoint(pointName) {
         let def = this;
         let pl = gsap.timeline();
 

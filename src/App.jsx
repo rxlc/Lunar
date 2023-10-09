@@ -3,6 +3,7 @@ import PointOfInterests from './PointOfInterests/PointOfInterests'
 import Apollo from './Apollo'
 import Toggle from './Toggle'
 import Quakes from './Quakes'
+import QuakeDetails from './QuakeDetails'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Apollo/>
       <Quakes/>
       <Toggle/>
+      <QuakeDetails/>
     </div>
   )
 }

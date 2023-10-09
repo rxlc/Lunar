@@ -97,7 +97,7 @@ export default class PointOfInterest {
 
                 if (this.type === 'apollo' || this.type === 'apolloAlt') {
                     this.element.addEventListener('click', () => {
-                        this.pointsList.focus(this.name);
+                        console.log("E")
                         document.dispatchEvent(new CustomEvent('apolloClicked', {detail: this.name}));
                     })
                 }

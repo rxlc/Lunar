@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import Experience from "../Experience";
 
 export default class Wave {
-    constructor(lat, long) {
+    constructor(lat, long, mag) {
         this.experience = new Experience();
         this.scene = this.experience.scene;
         this.camera = this.experience.camera;
@@ -15,7 +15,8 @@ export default class Wave {
         this.innerRadius = this.setInnerRadius;
         this.height = this.setHeight;
 
-        this.speed = 3;
+        this.speed = Math.random() * 2 + 3;
+        this.magnitude = mag;
 
         this.idleCounter = 0;
         this.idleTime = 80;
@@ -29,10 +30,13 @@ export default class Wave {
     }
 
     setOrientation(lat, long) {
-        const latRad = lat * Math.PI / 180;
-        const longRad = -long * Math.PI / 180;
+        this.pointsList = this.experience.world.pointsList;
+        let pos = this.pointsList.latlongToPos(lat, long, 100);
         
-        this.rotation = new THREE.Euler(-latRad, -longRad, 0, 'YXZ');   
+        let dummyObject = new THREE.Object3D();
+        dummyObject.lookAt(pos);
+        
+        this.rotation = dummyObject.rotation;
     }
 
     createRing() {
@@ -59,7 +63,7 @@ export default class Wave {
     update() {
         if (!this.idle) {
             this.outerRadius += 0.03 * this.speed;
-            this.innerRadius += this.fade ? 0.03 * this.speed : 0.031 * this.speed;
+            this.innerRadius += this.fade ? 0.03 * this.speed : (0.03 + (0.001 + (4-this.magnitude)/4 * 0.001)) * this.speed;
             this.height -= 0.006 * this.speed;
 
             this.scene.remove(this.ring);

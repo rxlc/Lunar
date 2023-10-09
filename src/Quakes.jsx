@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 
 import { Card, HStack, Heading, Text, IconButton, Flex, Stack } from '@chakra-ui/react'
 import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons'
@@ -7,15 +7,22 @@ import QuakesCard from './QuakesCard'
 
 import { AnimatePresence } from 'framer-motion'
 
+import { ExperienceContext } from './Contexts/ExperienceContext'
+import { CurrentQuakeContext } from './Contexts/CurrentQuakeContext'
+
 export default function Quakes() {
     const [quakes, setQuakes] = useState(null);
     const [data, setData] = useState(null);
     const [currentYear, setCurrentYear] = useState(1971);
 
+    const { experience } = useContext(ExperienceContext);
+    const { setCurrentQuake } = useContext(CurrentQuakeContext);
+
     const quakesStyle = {
         position: "absolute",
-        top: "20%",           
-        left: 0,          
+        top: "15%",           
+        left: 0,     
+        zIndex: 10,     
     };
 
     useEffect(() => {
@@ -45,7 +52,7 @@ export default function Quakes() {
     }, [data])
 
     useEffect(() => {
-        console.log(quakes)
+        //console.log(quakes)
     }, [quakes])
 
     function addFormattedDate(year, dayOfYear) {
@@ -58,20 +65,36 @@ export default function Quakes() {
         return formattedDate;
     }
 
+    function handleClick(quake) {
+        if (experience) {
+            experience.world.pointsList.focus(quake.Lat, quake.Long)
+        }
+        setCurrentQuake(quake);
+    }
+
+    useEffect(() => {
+        //console.log(currentYear)
+        setCurrentQuake(null);
+        if (experience) {
+            let inputWaves = quakes.filter(quake => quake.Year === currentYear);
+            experience.world.setWaves(inputWaves);
+        }
+    }, [currentYear])
+
     return (
         <Card style={quakesStyle} ml="12px" p="8px" background="transparent">
-            <HStack>
+            <HStack alignItems={"flex-start"}>
                 <Heading size="mg" mb="20px" color="white">YEAR</Heading>
                 <Heading size="xl" mb="20px" color="white">{currentYear}</Heading>
-                <IconButton aria-label="Previous Year" icon={<ArrowBackIcon/>} isDisabled={currentYear <= 1971} onClick={() => setCurrentYear(currentYear - 1)} />
-                <IconButton aria-label="Next Year" icon={<ArrowForwardIcon/>} isDisabled={currentYear >= 1976 } onClick={() => setCurrentYear(currentYear + 1)} />
+                <IconButton ml="20px" aria-label="Previous Year" icon={<ArrowBackIcon/>} backgroundColor={"#212529"} color="white" _hover={{"backgroundColor": "#343a40"}} isDisabled={currentYear <= 1971} onClick={() => setCurrentYear(currentYear - 1)} />
+                <IconButton aria-label="Next Year" icon={<ArrowForwardIcon/>} backgroundColor={"#212529"} color="white" _hover={{"backgroundColor": "#343a40"}} isDisabled={currentYear >= 1976 } onClick={() => setCurrentYear(currentYear + 1)} />
             </HStack>
             <Text color="white" fontWeight={"semibold"} fontSize={"14px"}>MOONQUAKES:</Text>
             <Flex borderBottom="1px solid white" mb="10px"/>
             <AnimatePresence>
                 <Stack spacing={"3"}>
                 {quakes &&
-                quakes.filter(quake => quake.Year === currentYear).map((quake, index) => <QuakesCard key={index} quake={quake} index={index}/>)}
+                quakes.filter(quake => quake.Year === currentYear).map((quake, index) => <QuakesCard key={index} quake={quake} index={index} handleClick={handleClick}/>)}
                 </Stack>
             </AnimatePresence>
         </Card>
