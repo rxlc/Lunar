@@ -20,16 +20,22 @@ export default class World {
 
         this.canvasReady = false;
 
+        this.speed = 0;
+
         this.waves = [];
 
         this.initialize();
     }
 
+    setSpeed(speed) {
+        this.speed = speed;
+    }
+
     initialize() {
         this.initSkyBox();
 
-        //this.earth = new Earth();
-        //this.sun = new Sun();
+        this.earth = new Earth();
+        this.sun = new Sun();
         this.moon = new Moon();
         this.pointsList = new PointsList();
     }
@@ -53,7 +59,7 @@ export default class World {
         this.waves = [];
 
         for (let i = 0; i < inputWaves.length; i++) {
-            this.waves.push(new Wave(inputWaves[i].Lat, inputWaves[i].Long, inputWaves[i].Magnitude));
+            this.waves.push(new Wave(inputWaves[i].Lat, inputWaves[i].Long, inputWaves[i].Magnitude, inputWaves[i].color));
         }
     }
 
@@ -64,5 +70,7 @@ export default class World {
         for (let i=0; i<this.waves.length; i++) {
             this.waves[i].update();
         }
+
+        this.moon.mesh.rotation.y += 0.0001 * this.speed;
     }
 }

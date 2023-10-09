@@ -10,6 +10,8 @@ import { AnimatePresence } from 'framer-motion'
 import { ExperienceContext } from './Contexts/ExperienceContext'
 import { CurrentQuakeContext } from './Contexts/CurrentQuakeContext'
 
+import rgbHex from 'rgb-hex'
+
 export default function Quakes() {
     const [quakes, setQuakes] = useState(null);
     const [data, setData] = useState(null);
@@ -46,6 +48,7 @@ export default function Quakes() {
         if (data) {
             for (let i=0; i < data.length; i++) {
                 data[i].formattedDate = addFormattedDate(data[i].Year, data[i].Day);
+                data[i].color = addHex(data[i].Magnitude);
             }
             setQuakes(data);
         }
@@ -63,6 +66,12 @@ export default function Quakes() {
         const formattedDate = date.toLocaleDateString(undefined, options);
       
         return formattedDate;
+    }
+
+    function addHex(magnitude) {
+        let color = {r: 255, g: 77, b: 50};
+        color.g = 255 - 255 * (magnitude/3.5)
+        return  rgbHex(color.r, color.g, color.b)
     }
 
     function handleClick(quake) {

@@ -4,47 +4,53 @@
         "name": "Apollo 11",
         "launchDate": "July 16, 1969",
         "landingDate": "July 20, 1969",
+        "Position": "0.7°N 23.5°E",
         "PSE": "EASEP",
-        "description": "Apollo 11 was the first mission to successfully land humans on the Moon, with astronauts Neil Armstrong and Buzz Aldrin becoming the first humans to walk on the lunar surface. This historic mission was a pivotal moment in human history, symbolizing the remarkable achievement of space exploration and the United States' victory in the space race against the Soviet Union."
+        "description": "The Apollo 11 mission, launching on July 16, 1969 was sponsored largely by the wish of the deceased president John F. Kennedy, declaring space as the “final frontier” for mankind to explore. The mission itself took over 195 hours, launching from Cape Canaveral Air Force Station and was the first time a man had ever been on the moon, with Neil Armstorng delivering the now famous quote: “That's one small step for man, one giant leap for mankind.” The crew themselves spent around 2 and a half hours conducting experiments and collecting data as well as samples while they were on the moon before returning to their command module, named “Columbia” and returning to earth; the combined trip to and from the earth took about 8 days, taking up the bulk of the mission time."
     },
     "Apollo 12": {
         "imagePath": "apollos/apollo12.jpg",
         "name": "Apollo 12",
         "launchDate": "November 14, 1969",
         "landingDate": "November 19, 1969",
+        "Position": "3.0°S 23.4°W",
         "PSE": "ALSEP",
-        "description": "Apollo 12 was the sixth crewed mission in the Apollo program and the second to land on the Moon. Astronauts Charles 'Pete' Conrad and Alan L. Bean conducted two moonwalks, and the mission successfully retrieved important scientific data and lunar samples. Despite a lightning strike shortly after liftoff, Apollo 12 demonstrated NASA's ability to recover from unexpected challenges and contributed significantly to lunar exploration."
+        "description": "The Apollo 12 mission, launched on November 14, 1969, merely 4 months after the launching of the Apollo 11, intending to gather more data and samples from the moon, commanded by Charles Conrad. Unlike the Apollo 11, this mission landed near the Ocean of Storms, named due to the unusual sea-like craters found on the moon, and conducted some experiments, collecting samples before returning to Earth. The most worrisome part of this mission was the encounter with a lightning storm shortly after launch, which destroyed the command module’s fuel cells, but despite that the mission had been completed safely. "
     },
     "Apollo 14": {
         "imagePath": "apollos/apollo14.jpg",
         "name": "Apollo 14",
         "launchDate": "January 31, 1971",
         "landingDate": "February 5, 1971",
+        "Position": "3.6°S 17.5°W",
         "PSE": "ALSEP",
-        "description": "Apollo 14 was the eighth crewed mission in the Apollo program and the third to successfully land on the Moon. Astronauts Alan B. Shepard Jr., Edgar D. Mitchell, and Stuart A. Roosa conducted two moonwalks, collecting valuable scientific data and lunar samples. Commander Shepard famously hit two golf balls on the lunar surface with a makeshift club. Despite some technical difficulties, Apollo 14 demonstrated the importance of precise lunar landings and contributed significantly to our understanding of the Moon."
+        "description": "The Apollo 14 mission, launching on February 5, 1971 had landed in the Fra Mauro highlands named for the crater of the same name nearby. This mission had encountered some technical difficulties, but had been completed safely, allowing the deployment of Apollo Lunar Surface Experiments Package (ALSEP) on the moon, a set of instruments which allowed NASA to observe the activities in the landing site up to a year after the mission members would return to Earth. "
     },
     "Apollo 15": {
         "imagePath": "apollos/apollo15.jpg",
         "name": "Apollo 15",
         "launchDate": "July 26, 1971",
         "landingDate": "July 30, 1971",
+        "Position": "26.1°N 3.6° E",
         "PSE": "ALSEP",
-        "description": "Apollo 15 was the ninth crewed mission in the Apollo program and the fourth to successfully land on the Moon. Astronauts David R. Scott, James B. Irwin, and Alfred M. Worden conducted three moonwalks, explored the lunar surface with a lunar rover, and collected a significant amount of scientific data and lunar samples. This mission was known for its focus on lunar science, and it included the first use of the lunar rover, which greatly expanded the astronauts' mobility on the Moon. Apollo 15 marked a step forward in our understanding of the Moon's geology and history."
+        "description": "The Apollo 15 mission was launched on July 26, 1971, with a newfound purpose, including — alongside the three crew members — a lunar rover meant to assist in the exploration of the moon surface. This mission, travelling in the module “Falcon”, landed near the Hadley Rille, an empty riverlike natural structure near the Apennine Mountains, whereupon they utilised the rover to travel and explore a small amount of the earth’s surface. Aside from that, this mission also included experiments that involved using a gamma-ray spectrometer and  laser altimeter to map the terrain and determine the composition of the moon’s surface. "
     },
     "Apollo 16": {
         "imagePath": "apollos/apollo16.jpg",
         "name": "Apollo 16",
         "launchDate": "April 16, 1972",
         "landingDate": "April 20, 1972",
+        "Position": "9.0°S 15.5°E",
         "PSE": "ALSEP",
-        "description": "Apollo 16 was the tenth crewed mission in the Apollo program and the fifth to successfully land on the Moon. Astronauts John W. Young, Charles M. Duke Jr., and Thomas K. Mattingly II conducted three moonwalks, explored the lunar surface with a lunar rover, and collected a wide range of scientific data and lunar samples. This mission furthered our understanding of the Moon's geology and provided valuable insights into the Moon's history and formation. It also marked the first time a scientist, Harrison H. Schmitt, walked on the lunar surface."
+        "description": "The Apollo 16 mission, launched in the “Orion” module on April 16, 1972, intended to explore the Descartes Highlands, split into the Cayley plains and the Descartes formation, due to the potential of large quantities of volcanic material. The mission revealed that there was, in fact, no volcanic material present in the location, and after conducting a few experiments, involving mapping and photography of the region, the crew returned to Earth on April 27, 1972."
     },
     "Apollo 17": {
         "imagePath": "apollos/apollo17.jpg",
         "name": "Apollo 17",
         "launchDate": "December 7, 1972",
         "landingDate": "December 11, 1972",
+        "Position": "20.2°N 30.8°E",
         "PSE": "ALSEP",
-        "description": "Apollo 17 was the last successful Moon landing in the Apollo program, with astronauts Cernan, Schmitt, and Evans conducting vital experiments and collecting lunar samples. Cernan, the mission commander, left the Moon with the famous words, 'We leave in peace for all mankind.'"
+        "description": "The Apollo 17 mission is the final of the Apollo series missions and it was launched in 1972 on December 7, intending to explore the Taurus-Littrow region of the Moon, characterised by a valley of the same name near the Sea of Serenity. The three crew members performed experiments and explored using a lunar rover, but aside from that, no major accomplishments were made in this final mission, and it marked an end of the moon exploration era, as the final mission the US made to the moon, and Eugene Cernan, one of the crew members remains the last person to walk on the moon to this day."
     }
 }

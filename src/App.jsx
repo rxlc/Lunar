@@ -4,6 +4,7 @@ import Apollo from './Apollo'
 import Toggle from './Toggle'
 import Quakes from './Quakes'
 import QuakeDetails from './QuakeDetails'
+import SliderV from './Slider'
 
 function App() {
   return (

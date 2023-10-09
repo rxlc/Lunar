@@ -1,8 +1,10 @@
 import * as THREE from 'three';
 import Experience from "../Experience";
 
+import rgbHex from 'rgb-hex';
+
 export default class Wave {
-    constructor(lat, long, mag) {
+    constructor(lat, long, mag, color) {
         this.experience = new Experience();
         this.scene = this.experience.scene;
         this.camera = this.experience.camera;
@@ -24,6 +26,8 @@ export default class Wave {
 
         this.opacity = 1;
         this.fade = false;
+
+        this.colorHex = parseInt(color, 16);
 
         this.setOrientation(lat, long);
         this.createRing();
@@ -53,7 +57,7 @@ export default class Wave {
 
         var geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
 
-        var material = new THREE.MeshBasicMaterial({color: 0xFF4F79, transparent: true, opacity: this.opacity});
+        var material = new THREE.MeshBasicMaterial({color: this.colorHex, transparent: true, opacity: this.opacity});
 
         this.ring = new THREE.Mesh(geometry, material);
         this.ring.rotation.set(this.rotation.x, this.rotation.y, this.rotation.z);

@@ -44,9 +44,15 @@ export default class PointsList {
             {type: "ocean", name: "Mare Serenitatis", lat: 28.0, long: 17.5},
             {type: "ocean", name: "Mare Fecunditatis", lat: -0.9182, long: 48.6595},
             {type: "ocean", name: "Mare Crisium", lat: 17.0, long: 59.1},
-            {type: "mountain", name: "Montes Alpes", lat: 46.4, long: 0.8},
+            {type: "ocean", name: "Mare Anguis", lat: 22.6, long: 67.7},
+            {type: "ocean", name: "Mare Australe", lat: 38.9, long: 93.0},
+            {type: "ocean", name: "Mare Crisium", lat: 17.0, long: 59.1},
+            {type: "ocean", name: "Mare Fecunditatis", lat: 7.8, long: 51.3},
+            {type: "ocean", name: "Mare Frigoris", lat: 56.0, long: 1.4},
             {type: "mountain", name: "Montes Caucasus", lat: 38.4, long: 10.0},
             {type: "mountain", name: "Montes Apenninus", lat: 18.9, long: 3.7},
+            {type: "mountain", name: "Mont Blanc", lat: 45.41, long: 0.44},
+            {type: "mountain", name: "Mons Ganau", lat: 4.79, long: 120.59}
             
         ];
 

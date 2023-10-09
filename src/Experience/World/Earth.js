@@ -7,7 +7,7 @@ export default class Earth {
         this.scene = this.experience.scene;
         this.camera = this.experience.camera;
 
-        this.radius = 400;
+        this.radius = 50;
         this.segments = 50;
 
         this.textureLoader = new THREE.TextureLoader();        
@@ -16,15 +16,17 @@ export default class Earth {
     }
 
     initialize() {
-        this.textureLoader.load('textures/earth/earthtexture1.jpg', (texture) => {
-            this.geometry = new THREE.SphereGeometry(this.radius, this.segments, this.segments);
-            this.material = new THREE.MeshPhongMaterial({ map: texture });
-          
-            this.mesh = new THREE.Mesh(this.geometry, this.material);
-            
-            this.mesh.rotation.set(0,0,0);
-            this.mesh.position.set(-1000, 0, 0);
-            this.scene.add(this.mesh);
+        this.geometry = new THREE.SphereGeometry(this.radius, this.segments, this.segments);
+        const earthTexture = this.textureLoader.load('textures/earth/earthtexture2.jpg'); 
+
+        this.material = new THREE.MeshBasicMaterial({
+            map: earthTexture,
         });
+        
+        this.mesh = new THREE.Mesh(this.geometry, this.material);
+        
+        this.mesh.rotation.set(0,0,0);
+        this.mesh.position.set(-1200, 0, 0);
+        this.scene.add(this.mesh);
     }
 }

@@ -87,7 +87,18 @@ export default function Apollo() {
               <Text color="gray.400" fontSize={"12px"}>Launch date:	{currentApollo.launchDate}</Text>
               <Text color="gray.400" fontSize={"12px"}>Landing Date: {currentApollo.landingDate}</Text>
               <Text color="gray.400" mb="8px" fontSize={"12px"}>PSE Package Type: {currentApollo.PSE}</Text>
-              <Text color="gray.400" fontSize={"14px"}>{currentApollo.description}</Text>
+  
+              <Text sx={{
+                '&::-webkit-scrollbar': {
+                  width: '16px',
+                  borderRadius: '8px',
+                  backgroundColor: `rgba(0, 0, 0, 0.2)`,
+                },
+                '&::-webkit-scrollbar-thumb': {
+                  backgroundColor: `rgba(0, 0, 0, 0.2)`,
+                },
+              }}
+  color="gray.400" maxHeight="120px" overflowY={"auto"} fontSize={"14px"}>{currentApollo.description}</Text>
             </Card>
           </motion.div>
       ) : null }

@@ -15,7 +15,7 @@ const QuakesCard = memo(({quake, index, handleClick}) => {
             exit={{ opacity: 0, y: -50 }}  
             transition={{duration: 0.5, delay: index * 0.2}} 
             layout  
-            bg="gray.800" color="white" borderRadius={"2px"} borderLeft={"2px solid orange"} p="8px" pl="8px" flexFlow={"row"} 
+            bg="gray.800" color="white" borderRadius={"2px"} borderLeft={`2px solid #${quake.color}`} p="8px" pl="8px" flexFlow={"row"} 
             alignItems="flex-end" justifyContent="space-between" cursor={"pointer"}
             onClick={() => handleClick(quake)}
         >

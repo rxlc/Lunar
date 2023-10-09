@@ -1,8 +1,8 @@
 import * as THREE from 'three';
 import Experience from "../Experience";
 
-import normalVertex from '../Shaders/Normals/normal_vertex'
-import normalFragment from '../Shaders/Normals/normal_fragment'
+import normalVertex from '../Shaders/Normals/vertex'
+import normalFragment from '../Shaders/Normals/fragment'
 
 export default class Moon {
     constructor() {
@@ -60,7 +60,12 @@ export default class Moon {
         this.lightPosition.x = Math.sin(5/*this.clock.getElapsedTime()*/) * this.distance;
     }
 
-    update() {  
+    update() { 
+        this.sliderval = 0;
+        
+        
+        this.mesh.rotation.y += 0.001 * this.sliderval;
+        
         this.updateLightPosition();
     }
 }
