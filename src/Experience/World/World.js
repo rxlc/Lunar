@@ -34,8 +34,8 @@ export default class World {
     initialize() {
         this.initSkyBox();
 
-        this.earth = new Earth();
-        this.sun = new Sun();
+        //this.earth = new Earth();
+        //this.sun = new Sun();
         this.moon = new Moon();
         this.pointsList = new PointsList();
     }
